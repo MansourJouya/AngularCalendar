@@ -1,0 +1,35 @@
+<div class="form-container">
+  <h3>{{ data.date | date: 'EEEE, MMMM d, y h:mm a' }}</h3>
+  <form [formGroup]="eventForm">
+    
+    <!-- Event Title -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Event Title</mat-label>
+      <input matInput formControlName="title" placeholder="Enter event title" maxlength="50" />
+      <mat-error *ngIf="eventForm.get('title')?.hasError('required')">
+        Event Title is required
+      </mat-error>
+      <mat-error *ngIf="eventForm.get('title')?.hasError('maxlength')">
+        Title cannot exceed 50 characters
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Enter description" maxlength="200"></textarea>
+      <mat-error *ngIf="eventForm.get('description')?.hasError('required')">
+        Description is required
+      </mat-error>
+      <mat-error *ngIf="eventForm.get('description')?.hasError('maxlength')">
+        Description cannot exceed 200 characters
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="onSave()" [disabled]="eventForm.invalid">Save</button>
+      <button mat-button (click)="dialogRef.close()">Cancel</button>
+    </div>
+  </form>
+</div>

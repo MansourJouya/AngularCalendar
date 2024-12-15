@@ -1,0 +1,312 @@
+/* General Calendar Design */
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: 'Arial', sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Calendar Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Month Display */
+.month-display {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Button Style */
+button.mat-icon-button {
+  color: #1976d2;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+/* Button Hover Effect */
+button.mat-icon-button:hover {
+  transform: scale(1.2);
+}
+
+/* Weekdays */
+.days-of-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Day Name */
+.day-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #1976d2;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+/* Day Grid Layout */
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-top: 8px;
+}
+
+/* Individual Day Design */
+.day-container {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Day Hover Effect */
+.day-container:hover {
+  background: #f0f0f0;
+  transform: scale(1.02);
+}
+
+/* Day Header Design */
+.day-header {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Selected Day Styling */
+.selected {
+  background-color: #09539c;
+  color: #fff;
+  transform: scale(1.05);
+  font-weight: bold;
+}
+
+/* Time Slot Section Design */
+.time-slots {
+  margin-top: 16px;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Time Slot Design */
+.time-slot {
+  background: #fff;
+  padding: 8px;
+  margin-bottom: 6px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Time Slot Hover Effect */
+.time-slot:hover {
+  background-color: #1976d2;
+  color: white;
+}
+
+.time-slot span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Button for Time Slot */
+button.mat-button {
+  font-size: 12px;
+  color: #1976d2;
+}
+
+/* Button Hover Effect */
+button.mat-button:hover {
+  text-decoration: underline;
+}
+
+/* Event List */
+.event-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Individual Event Item Design */
+.event-item {
+  background: #d0dbf4;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #333333;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  max-width: 200px;
+  flex: 0 1 auto;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Event Description Style */
+.event-description {
+  max-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Event Item Horizontal Line Design */
+.event-item hr {
+  margin: 8px 0;
+  border: none;
+  border-top: 1px solid #c2c2c2;
+  width: 100%;
+}
+
+/* Event Header Layout */
+.event-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+/* Event Item Hover Effect */
+.event-item:hover {
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Style for Event Item */
+.event-item span.material-icons {
+  color: #4bbdfa;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Icon Hover Effect */
+.event-item span.material-icons:hover {
+  color: #0d47a1;
+}
+
+/* Forms */
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.mat-error {
+  font-size: 12px;
+  color: red;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Time Slot Row Design */
+.time-slot-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Flexbox Design for Event Item Span */
+.event-item span {
+  flex: 1;
+}
+
+/* Drag Icon Next to Title */
+.drag-icon {
+  color: #757575;
+  font-size: 16px;
+  cursor: grab;
+  margin-right: 8px;
+  transition: color 0.3s ease;
+}
+
+/* Drag Icon Hover Effect */
+.drag-icon:hover {
+  color: #1976d2;
+}
+
+/* Weekdays Header Style */
+.weekdays-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  text-align: center;
+  margin: 8px 0 0 0;
+  padding: 0;
+}
+
+/* Individual Weekday Style */
+.weekday-container {
+  background-color: #1976d2;
+  color: white;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Weekday Hover Effect */
+.weekday-container:hover {
+  background-color: #1565c0;
+  cursor: pointer;
+}
+
+/* Custom Font for Weekday Text */
+.weekday-container span {
+  font-family: 'Arial', sans-serif;
+}
+
+
+
+.event-count {
+  background-color: red;
+  color: white;
+  font-size: 0.8em;
+  padding: 2px 5px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.day-container {
+  position: relative;
+}
+
+.day-number {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+ 

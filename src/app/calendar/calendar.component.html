@@ -1,0 +1,90 @@
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="calendar">
+  <!-- Header Section: Displays current month and navigation buttons -->
+  <div class="header">
+    <!-- Button to navigate to the previous month -->
+    <button mat-icon-button (click)="prevMonth()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <!-- Display current month and year -->
+    <span class="month-display">{{ monthNames[currentMonth] }} {{ currentYear }}</span>
+    <!-- Button to navigate to the next month -->
+    <button mat-icon-button (click)="nextMonth()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+  <!-- Weekdays Header: Displays the names of the days of the week -->
+  <div class="weekdays-header">
+    <div *ngFor="let day of weekDays" class="weekday-container">
+      <span>{{ day }}</span>
+    </div>
+  </div>
+
+  <!-- Days Grid: Displays all days in the current month -->
+  <div class="days-grid">
+    <div *ngFor="let day of daysInMonth" class="day-container" 
+      [class.selected]="selectedDay === day.day"
+      [style.grid-column]="day.position + 1"   
+      (click)="selectDay(day.day)" cdkDropList 
+      [cdkDropListConnectedTo]="getAllHourContainers(day.day)" [id]="'day-' + day.day">
+      <!-- Displays the day number and event count -->
+      <div class="day-header">
+        <span class="day-number">{{ day.day }}</span>
+        <!-- Show event count if there are events for that day -->
+        <span *ngIf="day.eventCount > 0" class="event-count">{{ day.eventCount }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Time Slots Section: Displays hourly slots for the selected day -->
+  <div *ngIf="selectedDay !== null" class="time-slots">
+    <!-- Display the selected day's full date -->
+    <h3>{{ getFormattedDate(selectedDay) }}</h3>
+
+    <div class="time-slot" *ngFor="let hour of hours" cdkDropList
+      [cdkDropListConnectedTo]="getAllHourContainers(selectedDay)" [id]="'hour-' + selectedDay + '-' + hour"
+      (cdkDropListDropped)="onEventDrop($event)">
+      <div class="time-slot-row">
+        <!-- Button to add a new event to this hour -->
+        <button mat-button (click)="openEventForm(hour, selectedDay)">+</button>
+
+        <!-- Displays the hour (e.g., 10:00) -->
+        <span>{{ hour }}:00</span>
+
+        <!-- List of events scheduled for this hour -->
+        <div class="event-list">
+          <div *ngFor="let event of getEventsForDayHour(selectedDay, hour)" class="event-item" cdkDrag
+            [cdkDragData]="event" [id]="'event-' + event.id" (cdkDragStarted)="onDragStarted($event)"
+            (cdkDragEnded)="onDragEnded($event)">
+            <div class="event-header">
+              <!-- Event title -->
+              <span class="event-title">{{ event.title }}</span>
+              <hr />
+
+              <!-- Event description -->
+              <div class="event-description">
+                {{ event.description }}
+              </div>
+              <hr />
+
+              <!-- Actions for the event: edit, delete, drag -->
+              <div class="event-actions">
+                <span (click)="openEventForm(hour, selectedDay, event)" class="material-icons">edit</span>
+                <span (click)="deleteEvent(event)" class="material-icons">delete</span>
+                <span class="material-icons drag-icon">menu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ 

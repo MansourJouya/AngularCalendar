@@ -1,0 +1,48 @@
+/* Container for the form */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+/* Style for form fields */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Layout for buttons */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+/* General button styling */
+button {
+  flex: 1;
+  margin: 0 8px;
+}
+
+/* Header styling */
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Input field styling for better visibility */
+mat-form-field input,
+mat-form-field textarea {
+  font-size: 16px;
+  padding: 8px;
+}
+
+/* Style for input error messages */
+mat-error {
+  font-size: 10px;
+  color: red;
+}
